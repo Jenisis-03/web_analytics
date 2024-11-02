@@ -1,9 +1,20 @@
+"use client";
 import Link from "next/link";
+import Header from "../components/Header";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
+import useUser from "@/hooks/userUser";
 
 export default function DashboardPage() {
+  const [user] = useUser();
+  useEffect(() => {
+    if (!user) return;
+    if (user == "no user") redirect("/Signin");
+  }, [user]);
   return (
     <div className="bg-black min-h-screen h-full w-full relative items-center justify-center flex flex-col">
       {/* Header */}
+      <Header />
       <div className="w-full items-start justify-start flex flex-col min-h-screen">
         <div className="w-full items-center justify-end flex p-6 border-b border-white/5 z-40">
           <Link href={"/add"} prefetch>

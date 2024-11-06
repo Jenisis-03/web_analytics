@@ -1,10 +1,9 @@
 "use client";
-import { supabase } from "@/config/Supabase_Client";
-import { useEffect,useState } from "react";
+import supabase from "@/config/Supabase_Client";
+import React, { useEffect, useState } from "react";
 
 function useUser() {
-  const [currentUser, setCurrentUser] = useState("");
-
+  const [currentUser, setCurrentUser] = useState();
   const catchUser = async () => {
     const {
       data: { user },
